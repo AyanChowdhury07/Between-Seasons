@@ -1,8 +1,26 @@
 [gd_scene format=3 uid="uid://dyvt2i6uruwey"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_t4ws7"]
+size = Vector3(10, 0.5, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t4ws7"]
+size = Vector3(10, 0.5, 10)
+
 [node name="World" type="Node3D" unique_id=1173020715]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1084005146]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1084903481]
-transform = Transform3D(1, 0, 0, 0, 0.8560693, 0.516861, 0, -0.516861, 0.8560693, 0, 0.9129946, 0.9820143)
+transform = Transform3D(1, 0, 0, 0, 0.8560693, 0.516861, 0, -0.516861, 0.8560693, 0, 3.1440184, 0.9820143)
+
+[node name="TestFloor" type="StaticBody3D" parent="." unique_id=1916912799]
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestFloor" unique_id=838925771]
+mesh = SubResource("BoxMesh_t4ws7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestFloor" unique_id=1255611505]
+shape = SubResource("BoxShape3D_t4ws7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1944940271]
+transform = Transform3D(1, 0, 0, 0, 0.40233508, 0.9154925, 0, -0.9154925, 0.40233508, 0, 4.8542023, 0)

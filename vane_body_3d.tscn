@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cu60o4t7ht3ft"]
+
+[ext_resource type="PackedScene" uid="uid://dgk1cur3sxorg" path="res://Vane.glb" id="1_3yia2"]
+[ext_resource type="Script" uid="uid://bqhadukosciiw" path="res://vane_body_3d.gd" id="1_v2le5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_c1ghy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t4ws7"]
+
+[node name="VaneBody3D" type="CharacterBody3D" unique_id=249208905]
+script = ExtResource("1_v2le5")
+
+[node name="Vane" parent="." unique_id=489879806 instance=ExtResource("1_3yia2")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1624349179]
+mesh = SubResource("BoxMesh_c1ghy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1529712551]
+shape = SubResource("BoxShape3D_t4ws7")

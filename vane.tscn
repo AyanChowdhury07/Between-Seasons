@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bmgxbyu23187j"]
+
+[ext_resource type="PackedScene" uid="uid://dgk1cur3sxorg" path="res://Vane.glb" id="1_o16sm"]
+
+[node name="Vane" unique_id=489879806 instance=ExtResource("1_o16sm")]
+
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(1564491329) index="0" unique_id=1261232878]
+bones/1/rotation = Quaternion(0.9394891, -0.084519014, 0.07757867, -0.3227977)
+bones/2/rotation = Quaternion(0.06633011, 0.29722354, 0.9469051, 0.10309855)

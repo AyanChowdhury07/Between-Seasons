@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dyvt2i6uruwey"]
 
 [ext_resource type="PackedScene" uid="uid://cd1elyd0hxr6j" path="res://block.tscn" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://cu60o4t7ht3ft" path="res://vane_body_3d.tscn" id="1_fj7yv"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_t4ws7"]
 size = Vector3(10, 0.5, 10)
@@ -9,14 +10,6 @@ size = Vector3(10, 0.5, 10)
 size = Vector3(10, 0.5, 10)
 
 [node name="World" type="Node3D" unique_id=1173020715]
-
-[node name="Block" parent="." unique_id=211678271 instance=ExtResource("1_f3sb7")]
-transform = Transform3D(0.9266885, -0.3758303, 0, 0.3758303, 0.9266885, 0, 0, 0, 1, 0, 3, 0)
-
-[node name="Block2" parent="." unique_id=1275679468 instance=ExtResource("1_f3sb7")]
-transform = Transform3D(0.72257024, 0.69129753, 0, -0.69129753, 0.72257024, 0, 0, 0, 1, 0, 4.470696, 0)
-
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1084005146]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1084903481]
 transform = Transform3D(1, 0, 0, 0, 0.8560693, 0.516861, 0, -0.516861, 0.8560693, 0, 3.1440184, 3.3045068)
@@ -32,3 +25,14 @@ shape = SubResource("BoxShape3D_t4ws7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1944940271]
 transform = Transform3D(0.22317325, 0.89240265, -0.3921877, 0, 0.40233505, 0.9154924, 0.97477883, -0.20431346, 0.08979047, -7, 4.8542023, 0)
+
+[node name="Blocks" type="Node3D" parent="." unique_id=1487159206]
+
+[node name="Block" parent="Blocks" unique_id=211678271 instance=ExtResource("1_f3sb7")]
+transform = Transform3D(0.9266885, -0.3758303, 0, 0.3758303, 0.9266885, 0, 0, 0, 1, 0, 2.8780193, 0)
+
+[node name="Block2" parent="Blocks" unique_id=1275679468 instance=ExtResource("1_f3sb7")]
+transform = Transform3D(0.72257024, 0.69129753, 0, -0.69129753, 0.72257024, 0, 0, 0, 1, 0, 4.470696, 0)
+
+[node name="VaneBody3D" parent="." unique_id=249208905 instance=ExtResource("1_fj7yv")]
+transform = Transform3D(0.9998602, -0.01671338, 1.1175871e-08, 0.01671341, 0.99986035, 0, 1.1175871e-08, 7.450581e-09, 1, -2.496306, 3.507691, 2.3212838)

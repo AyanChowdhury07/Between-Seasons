@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cd1elyd0hxr6j" path="res://block.tscn" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://cu60o4t7ht3ft" path="res://vane_body_3d.tscn" id="1_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://bnptjw8yyd02p" path="res://cloud_medal.tscn" id="3_tlwt5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_t4ws7"]
 size = Vector3(10, 0.5, 10)
@@ -15,6 +16,7 @@ size = Vector3(10, 0.5, 10)
 transform = Transform3D(1, 0, 0, 0, 0.8560693, 0.516861, 0, -0.516861, 0.8560693, 0, 3.1440184, 3.3045068)
 
 [node name="TestFloor" type="StaticBody3D" parent="." unique_id=1916912799]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TestFloor" unique_id=838925771]
@@ -36,3 +38,6 @@ transform = Transform3D(0.72257024, 0.69129753, 0, -0.69129753, 0.72257024, 0, 0
 
 [node name="VaneBody3D" parent="." unique_id=249208905 instance=ExtResource("1_fj7yv")]
 transform = Transform3D(0.9998602, -0.01671338, 1.1175871e-08, 0.01671341, 0.99986035, 0, 1.1175871e-08, 7.450581e-09, 1, -2.496306, 3.507691, 2.3212838)
+
+[node name="Cloud Medal" parent="." unique_id=154702212 instance=ExtResource("3_tlwt5")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.8845558, 3.0089278, -4.8272195)

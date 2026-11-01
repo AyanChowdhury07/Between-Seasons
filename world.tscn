@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dyvt2i6uruwey"]
 
+[ext_resource type="PackedScene" uid="uid://cd1elyd0hxr6j" path="res://block.tscn" id="1_f3sb7"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_t4ws7"]
 size = Vector3(10, 0.5, 10)
 
@@ -8,10 +10,16 @@ size = Vector3(10, 0.5, 10)
 
 [node name="World" type="Node3D" unique_id=1173020715]
 
+[node name="Block" parent="." unique_id=211678271 instance=ExtResource("1_f3sb7")]
+transform = Transform3D(0.9266885, -0.3758303, 0, 0.3758303, 0.9266885, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="Block2" parent="." unique_id=1275679468 instance=ExtResource("1_f3sb7")]
+transform = Transform3D(0.72257024, 0.69129753, 0, -0.69129753, 0.72257024, 0, 0, 0, 1, 0, 4.470696, 0)
+
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1084005146]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1084903481]
-transform = Transform3D(1, 0, 0, 0, 0.8560693, 0.516861, 0, -0.516861, 0.8560693, 0, 3.1440184, 0.9820143)
+transform = Transform3D(1, 0, 0, 0, 0.8560693, 0.516861, 0, -0.516861, 0.8560693, 0, 3.1440184, 3.3045068)
 
 [node name="TestFloor" type="StaticBody3D" parent="." unique_id=1916912799]
 metadata/_edit_group_ = true
@@ -23,4 +31,4 @@ mesh = SubResource("BoxMesh_t4ws7")
 shape = SubResource("BoxShape3D_t4ws7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1944940271]
-transform = Transform3D(1, 0, 0, 0, 0.40233508, 0.9154925, 0, -0.9154925, 0.40233508, 0, 4.8542023, 0)
+transform = Transform3D(0.22317325, 0.89240265, -0.3921877, 0, 0.40233505, 0.9154924, 0.97477883, -0.20431346, 0.08979047, -7, 4.8542023, 0)

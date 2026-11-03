@@ -2,8 +2,10 @@ extends CharacterBody3D
 
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 12
 const ROTATION_SPEED = 12 
+
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var visual_model : Node3D = $Vane
 @onready var anim_player : AnimationPlayer = $Vane/AnimationPlayer
@@ -11,7 +13,7 @@ const ROTATION_SPEED = 12
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity.y -= gravity * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -25,9 +27,12 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 		
+		var model_offset := PI/2.0
+		
+		
 		#Rotation logic
 		if visual_model:
-			var target_angle := atan2(direction.x,direction.z)
+			var target_angle := atan2(direction.x,direction.z) - model_offset
 			visual_model.rotation.y = lerp_angle(visual_model.rotation.y,target_angle,ROTATION_SPEED * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)

@@ -13,5 +13,14 @@ script = ExtResource("1_v2le5")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=438423687]
-transform = Transform3D(-1.5825003e-07, 0, 2.6572776, 0, 1.8646083, 0, -3.6203384, 0, -1.1615328e-07, -0.68919134, -0.81683385, 0.2387281)
+transform = Transform3D(-1.5825002e-07, 0, 2.6572773, 0, 1.864608, 0, -3.6203382, 0, -1.1615327e-07, -0.68919134, -0.81683385, 0.23872809)
 shape = SubResource("CapsuleShape3D_m28v3")
+
+[node name="CameraController" type="Node3D" parent="." unique_id=1509123532]
+top_level = true
+
+[node name="CameraTarget" type="Node3D" parent="CameraController" unique_id=2131965408]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, -0.7028885, 2.662005, 13)
+
+[node name="Camera3D" type="Camera3D" parent="CameraController/CameraTarget" unique_id=1387547180]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0.0938406, 1.9258657, -3.3237267)

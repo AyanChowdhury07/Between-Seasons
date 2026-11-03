@@ -12,9 +12,6 @@ size = Vector3(10, 0.5, 10)
 
 [node name="World" type="Node3D" unique_id=1173020715]
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1084903481]
-transform = Transform3D(1, 0, 0, 0, 0.8560693, 0.516861, 0, -0.516861, 0.8560693, 0, 3.1440184, 3.3045068)
-
 [node name="TestFloor" type="StaticBody3D" parent="." unique_id=1916912799]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 metadata/_edit_group_ = true
@@ -37,7 +34,7 @@ transform = Transform3D(0.9266885, -0.3758303, 0, 0.3758303, 0.9266885, 0, 0, 0,
 transform = Transform3D(0.72257024, 0.69129753, 0, -0.69129753, 0.72257024, 0, 0, 0, 1, 0, 4.470696, 0)
 
 [node name="VaneBody3D" parent="." unique_id=249208905 instance=ExtResource("1_fj7yv")]
-transform = Transform3D(0.9998602, -0.01671338, 1.1175871e-08, 0.01671341, 0.99986035, 0, 1.1175871e-08, 7.450581e-09, 1, -2.496306, 3.507691, 2.3212838)
+transform = Transform3D(0.49993017, -0.008356706, -5.524894e-09, 0.008356706, 0.49993017, -3.818163e-09, 5.5879372e-09, 3.7252899e-09, 0.5, -2.496306, 3.507691, 2.3212838)
 
 [node name="Cloud Medal" parent="." unique_id=154702212 instance=ExtResource("3_tlwt5")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.8845558, 3.0089278, -4.8272195)

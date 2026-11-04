@@ -1,16 +1,22 @@
 extends CharacterBody3D
 
-
-const SPEED = 5.0
-const JUMP_VELOCITY = 12
-const ROTATION_SPEED = 12 
+const SPEED = 10
+const JUMP_VELOCITY = 8
+const ROTATION_SPEED = 24 
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var visual_model : Node3D = $Vane
 @onready var anim_player : AnimationPlayer = $Vane/AnimationPlayer
 
+@export var Mouse_Sensitivity : float = 0.003
+
+
+@onready var CameraPivot : Node3D = $CameraController/CameraTarget/CameraPivot
+@onready var CameraController: Node3D = $CameraController
+
 func _physics_process(delta: float) -> void:
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -29,7 +35,6 @@ func _physics_process(delta: float) -> void:
 		
 		var model_offset := PI/2.0
 		
-		
 		#Rotation logic
 		if visual_model:
 			var target_angle := atan2(direction.x,direction.z) - model_offset
@@ -39,3 +44,25 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+func _input(event):
+	
+	
+	if event is InputEventMouseMotion:
+		#Rotate horizontally using Mouse X
+		$CameraController.rotate_y(-event.relative.x * Mouse_Sensitivity)
+		
+		#Rotate the Pivot vertically  using Mouse Y
+		if CameraPivot:
+			CameraPivot.rotation.x -= event.relative.y * Mouse_Sensitivity
+			
+			# 3. Clamp the vertical rotation so the camera can't flip upside down
+			# Limit between -70 degrees and +60 degrees
+			CameraPivot.rotation.x = clamp(
+				CameraPivot.rotation.x, 
+				deg_to_rad(-70), 
+				deg_to_rad(60)
+			)
+func _process(delta: float) -> void:
+	# Smoothly match the camera controller's position to the player's position every frame
+	if CameraController:
+		CameraController.global_position = CameraController.global_position.lerp(global_position, 15.0 * delta)

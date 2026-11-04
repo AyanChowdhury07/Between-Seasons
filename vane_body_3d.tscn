@@ -23,5 +23,8 @@ top_level = true
 [node name="CameraTarget" type="Node3D" parent="CameraController" unique_id=2131965408]
 transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, -0.7028885, 2.662005, 13)
 
-[node name="Camera3D" type="Camera3D" parent="CameraController/CameraTarget" unique_id=1387547180]
-transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0.0938406, 1.9258657, -3.3237267)
+[node name="CameraPivot" type="Node3D" parent="CameraController/CameraTarget" unique_id=233375699]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, 0.4668704, -13.333496)
+
+[node name="Camera3D" type="Camera3D" parent="CameraController/CameraTarget/CameraPivot" unique_id=1387547180]
+transform = Transform3D(1, 0, 0, 0, 0.9999997, 0, 0, 0, 0.9999997, 0.0938406, 1.4589949, 10.009767)

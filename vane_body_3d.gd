@@ -28,17 +28,22 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	#User input and camera rotation taken into account for Vector3 direction
+	var direction := (CameraController.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	
+	
 	if direction != Vector3.ZERO:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 		
-		var model_offset := PI/2.0
-		
-		#Rotation logic
+		#Camera relative rotation logic
 		if visual_model:
-			var target_angle := atan2(direction.x,direction.z) - model_offset
-			visual_model.rotation.y = lerp_angle(visual_model.rotation.y,target_angle,ROTATION_SPEED * delta)
+			var model_offset := PI / 2.0
+			var target_angle := atan2(direction.x, direction.z) - model_offset
+			visual_model.rotation.y = lerp_angle(visual_model.rotation.y, target_angle, ROTATION_SPEED * delta)
+		
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -58,10 +63,7 @@ func _input(event):
 			# 3. Clamp the vertical rotation so the camera can't flip upside down
 			# Limit between -70 degrees and +60 degrees
 			CameraPivot.rotation.x = clamp(
-				CameraPivot.rotation.x, 
-				deg_to_rad(-70), 
-				deg_to_rad(60)
-			)
+				CameraPivot.rotation.x, deg_to_rad(-70), deg_to_rad(60))
 func _process(delta: float) -> void:
 	# Smoothly match the camera controller's position to the player's position every frame
 	if CameraController:

@@ -4,7 +4,8 @@
 [ext_resource type="Script" uid="uid://bqhadukosciiw" path="res://vane_body_3d.gd" id="1_v2le5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m28v3"]
-height = 1.6181641
+radius = 1.0
+height = 3.0
 
 [node name="VaneBody3D" type="CharacterBody3D" unique_id=249208905]
 script = ExtResource("1_v2le5")
@@ -13,7 +14,7 @@ script = ExtResource("1_v2le5")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=438423687]
-transform = Transform3D(-1.5825002e-07, 0, 2.6572773, 0, 1.864608, 0, -3.6203382, 0, -1.1615327e-07, -0.68919134, -0.81683385, 0.23872809)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, -0.9, 0)
 shape = SubResource("CapsuleShape3D_m28v3")
 
 [node name="CameraController" type="Node3D" parent="." unique_id=1509123532]

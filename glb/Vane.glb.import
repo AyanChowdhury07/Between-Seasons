@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dghq6orsxjyup"
-path="res://.godot/imported/Vane.glb-d86d7568f5f8ec252178838fbf1630c7.scn"
+path="res://.godot/imported/Vane.glb-9222fe08231797c91ee316a1ff4a18f3.scn"
 
 [deps]
 
-source_file="res://Vane.glb"
-dest_files=["res://.godot/imported/Vane.glb-d86d7568f5f8ec252178838fbf1630c7.scn"]
+source_file="res://glb/Vane.glb"
+dest_files=["res://.godot/imported/Vane.glb-9222fe08231797c91ee316a1ff4a18f3.scn"]
 
 [params]
 

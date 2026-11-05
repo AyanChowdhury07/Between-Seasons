@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dyvt2i6uruwey"]
 
-[ext_resource type="PackedScene" uid="uid://cd1elyd0hxr6j" path="res://block.tscn" id="1_f3sb7"]
-[ext_resource type="PackedScene" uid="uid://cu60o4t7ht3ft" path="res://vane_body_3d.tscn" id="1_fj7yv"]
-[ext_resource type="PackedScene" uid="uid://bnptjw8yyd02p" path="res://cloud_medal.tscn" id="3_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://cd1elyd0hxr6j" path="res://tscn folders/block.tscn" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://cu60o4t7ht3ft" path="res://tscn folders/vane_body_3d.tscn" id="1_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://bnptjw8yyd02p" path="res://tscn folders/cloud_medal.tscn" id="3_tlwt5"]
 [ext_resource type="MeshLibrary" uid="uid://dew7njdqjwyi5" path="res://Resources/Grass blocks.meshlib" id="4_aqk2v"]
 
 [node name="World" type="Node3D" unique_id=1173020715]

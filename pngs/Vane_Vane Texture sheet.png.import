@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc0inppckke0w"
-path.s3tc="res://.godot/imported/grass.png-79cf597cc1adecdff9d12adae9606f9b.s3tc.ctex"
+uid="uid://sdgw8nyveqde"
+path.s3tc="res://.godot/imported/Vane_Vane Texture sheet.png-ec11b946183489bbd77034a4793a6a6b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "e26d054d232f1bd3c4ceaf037bae4d74"
+}
 
 [deps]
 
-source_file="res://grass.png"
-dest_files=["res://.godot/imported/grass.png-79cf597cc1adecdff9d12adae9606f9b.s3tc.ctex"]
+source_file="res://pngs/Vane_Vane Texture sheet.png"
+dest_files=["res://.godot/imported/Vane_Vane Texture sheet.png-ec11b946183489bbd77034a4793a6a6b.s3tc.ctex"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sdgw8nyveqde"
-path.s3tc="res://.godot/imported/Vane_Vane Texture sheet.png-ddccaabf692173234e1a642a62bb6f9c.s3tc.ctex"
+uid="uid://0an3dags4skh"
+path.s3tc="res://.godot/imported/Vane_Vane Texture sheet.png-5ad4ab13108fab3bb6420fc98d5e7c99.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Vane_Vane Texture sheet.png"
-dest_files=["res://.godot/imported/Vane_Vane Texture sheet.png-ddccaabf692173234e1a642a62bb6f9c.s3tc.ctex"]
+source_file="res://glb/Vane_Vane Texture sheet.png"
+dest_files=["res://.godot/imported/Vane_Vane Texture sheet.png-5ad4ab13108fab3bb6420fc98d5e7c99.s3tc.ctex"]
 
 [params]
 

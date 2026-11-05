@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bnptjw8yyd02p"]
 
-[ext_resource type="Script" uid="uid://byn3bbqglju3c" path="res://cloud_medal.gd" id="1_4easn"]
-[ext_resource type="Texture2D" uid="uid://breagm5te1ta3" path="res://CloudMedal.png" id="2_fbyk8"]
+[ext_resource type="Script" uid="uid://byn3bbqglju3c" path="res://Models/cloud_medal.gd" id="1_4easn"]
+[ext_resource type="Texture2D" uid="uid://breagm5te1ta3" path="res://pngs/CloudMedal.png" id="2_fbyk8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fbyk8"]
 transparency = 1

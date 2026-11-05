@@ -1,5 +1,10 @@
 [gd_scene format=3 uid="uid://cd1elyd0hxr6j"]
 
+[ext_resource type="Texture2D" uid="uid://cc0inppckke0w" path="res://grass.png" id="1_im0tn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xfwl5"]
+albedo_texture = ExtResource("1_im0tn")
+
 [sub_resource type="BoxMesh" id="BoxMesh_t4ws7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t4ws7"]
@@ -7,6 +12,7 @@
 [node name="Block" type="RigidBody3D" unique_id=211678271]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1453345478]
+material_override = SubResource("StandardMaterial3D_xfwl5")
 mesh = SubResource("BoxMesh_t4ws7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=528653996]

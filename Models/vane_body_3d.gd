@@ -59,7 +59,7 @@ func _update_animations() -> void:
 
 	if not is_on_floor():
 		if anim_player.has_animation("WalkCycle"):
-			anim_player.speed_scale = 10.0 # Playat 2x speed for jumping
+			anim_player.speed_scale = 10.0 # Play at 2x speed for jumping
 			if anim_player.current_animation != "WalkCycle":
 				anim_player.play("WalkCycle")
 	elif horizontal_speed > 0.1: # Moving on the floor

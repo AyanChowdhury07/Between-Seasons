@@ -49,6 +49,29 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	_update_animations()
+
+func _update_animations() -> void:
+	if not anim_player:
+		return
+		
+	var horizontal_speed := Vector3(velocity.x, 0,velocity.z).length()
+
+	if not is_on_floor():
+		if anim_player.has_animation("WalkCycle"):
+			anim_player.speed_scale = 10.0 # Playat 2x speed for jumping
+			if anim_player.current_animation != "WalkCycle":
+				anim_player.play("WalkCycle")
+	elif horizontal_speed > 0.1: # Moving on the floor
+		if anim_player.has_animation("WalkCycle"):
+			# Play at normal speed when walking
+			anim_player.speed_scale = 5.0
+			if anim_player.current_animation != "WalkCycle":
+				anim_player.play("WalkCycle")
+	else:
+		# Stop or pause the animation when standing completely still
+		anim_player.stop()
+
 func _input(event):
 	
 	

@@ -16,8 +16,8 @@ shader_parameter/vignette_intensity = 0.4
 shader_parameter/aberation_amount = 0.70000003325
 shader_parameter/roll_line_amount = 0.0
 shader_parameter/roll_speed = 1.0
-shader_parameter/scan_line_strength = -8.0
-shader_parameter/pixel_strength = -4.0
+shader_parameter/scan_line_strength = -5.999999715
+shader_parameter/pixel_strength = -2.9999999525
 
 [node name="CRT" type="Node2D" unique_id=1102243773]
 

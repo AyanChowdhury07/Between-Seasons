@@ -17,17 +17,32 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var current_weather_state : int  = 0
 #(0: Spring, 1: Winter, 2: Summer, 3: Autumn)
 
+#For autumn power up
+var is_floating : bool = false
+var float_timer : float = 0.0
+@export var max_float_duration : float = 2.5
+
 func _physics_process(delta: float) -> void:
 
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y -= gravity * delta
+		if is_floating and velocity.y < 0:
+			velocity.y -= (gravity * 0.1) * delta
+		else:
+			velocity.y -= gravity * delta
+	else:
+		is_floating = false
+		#Reset's when touching ground
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-	if Input.is_action_just_pressed("Weather_Power_UP") and current_weather_state == 1:
-		try_winter_sneeze()
+	if Input.is_action_just_pressed("Weather_Power_UP"):
+		match current_weather_state:
+			1:
+				try_winter_sneeze()
+			3:
+				try_autumn_float()
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -101,6 +116,11 @@ func try_winter_sneeze() -> void:
 	if visual_model:
 		var forward_dir = -visual_model.global_transform.basis.z
 		velocity += forward_dir * 6.0
+
+func try_autumn_float() -> void:
+	velocity.y = 8.0
+	is_floating = true
+	
 
 func set_weather_state(new_weather : int) -> void:
 	current_weather_state = new_weather

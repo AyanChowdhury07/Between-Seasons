@@ -11,9 +11,11 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @export var Mouse_Sensitivity : float = 0.003
 
-
 @onready var CameraPivot : Node3D = $CameraController/CameraTarget/CameraPivot
 @onready var CameraController: Node3D = $CameraController
+
+var current_weather_state : int  = 0
+#(0: Spring, 1: Winter, 2: Summer, 3: Autumn)
 
 func _physics_process(delta: float) -> void:
 
@@ -24,7 +26,8 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
+	if Input.is_action_just_pressed("Weather_Power_UP") and current_weather_state == 1:
+		try_winter_sneeze()
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -87,6 +90,21 @@ func _input(event):
 			# Limit between -70 degrees and +60 degrees
 			CameraPivot.rotation.x = clamp(
 				CameraPivot.rotation.x, deg_to_rad(-70), deg_to_rad(60))
+			
+				
+				
+				
+
+func try_winter_sneeze() -> void:
+	velocity.y = 18.0 #Rocket jump up
+		
+	if visual_model:
+		var forward_dir = -visual_model.global_transform.basis.z
+		velocity += forward_dir * 6.0
+
+func set_weather_state(new_weather : int) -> void:
+	current_weather_state = new_weather
+
 func _process(delta: float) -> void:
 	# Smoothly match the camera controller's position to the player's position every frame
 	if CameraController:

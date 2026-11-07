@@ -5,9 +5,10 @@ enum Weather {SPRING, WINTER, SUMMER, AUTUMN}
 @export var World_Environment : WorldEnvironment
 @export var SummerGridMap : GridMap
 @export var WeatherUI : Sprite2D
+@export var Player : CharacterBody3D
+
 
 #Initialise background environments
-
 var environments = {
 	Weather.SPRING: preload("res://tres/Spring_env.tres"),
 	Weather.WINTER: preload("res://tres/Winter_env.tres"),
@@ -49,12 +50,13 @@ func set_weather(NewWeather : Weather) -> void:
 	update_gridmaps()
 	
 	#Change power ups
-	update_PowerUps()
+	update_PowerUps(NewWeather)
 	
 func update_gridmaps() -> void:
 	pass
 	#update later
 
-func update_PowerUps()-> void:
-	pass
+func update_PowerUps(NewWeather : Weather)-> void:
+	if Player and Player.has_method("set_weather_state"):
+		Player.set_weather_state(NewWeather)
 	#update later

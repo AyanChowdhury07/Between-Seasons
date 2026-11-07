@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cu60o4t7ht3ft"]
 
-[ext_resource type="PackedScene" uid="uid://dgk1cur3sxorg" path="res://Vane.glb" id="1_3yia2"]
-[ext_resource type="Script" uid="uid://bqhadukosciiw" path="res://vane_body_3d.gd" id="1_v2le5"]
+[ext_resource type="PackedScene" uid="uid://dgk1cur3sxorg" path="res://Models/Vane.glb" id="1_3yia2"]
+[ext_resource type="Script" uid="uid://bqhadukosciiw" path="res://Models/vane_body_3d.gd" id="1_v2le5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m28v3"]
 radius = 1.0

@@ -6,7 +6,9 @@
 [ext_resource type="MeshLibrary" uid="uid://do3pp4b4p2k3y" path="res://Resources/Building blocks.meshlib" id="4_q75jw"]
 [ext_resource type="PackedScene" uid="uid://cxbdoyx7jwjry" path="res://tscn folders/ui.tscn" id="5_llf1o"]
 [ext_resource type="Environment" uid="uid://cd38ugrhetoss" path="res://tres/Winter_env.tres" id="6_mkb4v"]
+[ext_resource type="Texture2D" uid="uid://bccbk4kvjnkjv" path="res://pngs/UI/Summer UI.png" id="7_cc1mj"]
 [ext_resource type="Script" uid="uid://y73a74b3c8np" path="res://tscn folders/world_manager.gd" id="7_q75jw"]
+[ext_resource type="Script" uid="uid://dxxnqn1scyt3j" path="res://tscn folders/weather_icon.gd" id="8_6taqe"]
 
 [node name="World" type="Node3D" unique_id=1173020715]
 
@@ -27,8 +29,6 @@ transform = Transform3D(0.49993017, -0.008356706, -5.524894e-09, 0.008356706, 0.
 [node name="Cloud Medal" parent="." unique_id=154702212 instance=ExtResource("3_mkb4v")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.8845558, 3.0089278, -4.8272195)
 
-[node name="CRT" parent="." unique_id=1102243773 instance=ExtResource("5_llf1o")]
-
 [node name="Weather_Manager" type="Node3D" parent="." unique_id=654144871]
 
 [node name="SummerGridMap" type="GridMap" parent="Weather_Manager" unique_id=2040214257]
@@ -41,7 +41,19 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=119551021]
 environment = ExtResource("6_mkb4v")
 
-[node name="WorldManager" type="Node" parent="." unique_id=1861343068 node_paths=PackedStringArray("World_Environment", "SummerGridMap")]
+[node name="WorldManager" type="Node" parent="." unique_id=1861343068 node_paths=PackedStringArray("World_Environment", "SummerGridMap", "WeatherUI")]
 script = ExtResource("7_q75jw")
 World_Environment = NodePath("../WorldEnvironment")
 SummerGridMap = NodePath("../Weather_Manager/SummerGridMap")
+WeatherUI = NodePath("../UI/WeatherIcon")
+
+[node name="UI" type="Node2D" parent="." unique_id=275836049]
+
+[node name="WeatherIcon" type="Sprite2D" parent="UI" unique_id=878793468]
+position = Vector2(144, 514)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("7_cc1mj")
+hframes = 4
+script = ExtResource("8_6taqe")
+
+[node name="CRT" parent="UI" unique_id=1102243773 instance=ExtResource("5_llf1o")]

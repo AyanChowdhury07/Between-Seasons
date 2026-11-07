@@ -19,7 +19,7 @@ shader_parameter/roll_speed = 1.0
 shader_parameter/scan_line_strength = -5.999999715
 shader_parameter/pixel_strength = -2.9999999525
 
-[node name="CRT" type="Node2D" unique_id=1102243773]
+[node name="ui" type="Node2D" unique_id=1102243773]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=979558111]
 

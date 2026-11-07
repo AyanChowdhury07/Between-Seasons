@@ -4,6 +4,7 @@ enum Weather {SPRING, WINTER, SUMMER, AUTUMN}
 
 @export var World_Environment : WorldEnvironment
 @export var SummerGridMap : GridMap
+@export var WeatherUI : Sprite2D
 
 #Initialise background environments
 
@@ -16,7 +17,7 @@ var environments = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	set_weather(Weather.SUMMER)
+	set_weather(Weather.SPRING)
 	
 	pass # Replace with function body.
 
@@ -40,6 +41,9 @@ func set_weather(NewWeather : Weather) -> void:
 	#Change background
 	if World_Environment and environments.has(NewWeather):
 		World_Environment.environment = environments[NewWeather]
+	
+	if WeatherUI:
+		WeatherUI.change_ui_weather(NewWeather)
 	
 	#Change gridmaps
 	update_gridmaps()

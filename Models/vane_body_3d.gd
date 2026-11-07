@@ -17,17 +17,24 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var current_weather_state : int  = 0
 #(0: Spring, 1: Winter, 2: Summer, 3: Autumn)
 
-#For autumn power up
+#Autumn variables
 var is_floating : bool = false
 var float_timer : float = 0.0
 @export var max_float_duration : float = 2.5
+
+#Summer variables
+var is_dashing : bool = false
+var dash_timer : float = 0.0
+@export var dash_duration : float = 0.5
+@export var dash_speed_boost : float = 50.0 #Dash speed
+var dash_direction : Vector3 = Vector3.ZERO #initialise direction
 
 func _physics_process(delta: float) -> void:
 
 	# Add the gravity.
 	if not is_on_floor():
 		if is_floating and velocity.y < 0:
-			velocity.y -= (gravity * 0.1) * delta
+			velocity.y -= (gravity * 0.1) * delta #Autumn float
 		else:
 			velocity.y -= gravity * delta
 	else:
@@ -41,6 +48,8 @@ func _physics_process(delta: float) -> void:
 		match current_weather_state:
 			1:
 				try_winter_sneeze()
+			2:
+				try_summer_dash()
 			3:
 				try_autumn_float()
 	# Get the input direction and handle the movement/deceleration.
@@ -50,9 +59,17 @@ func _physics_process(delta: float) -> void:
 	#User input and camera rotation taken into account for Vector3 direction
 	var direction := (CameraController.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
+	#Summer dash logic
+	if is_dashing:
+		dash_timer -= delta
+		if dash_timer <= 0.0: #finish duration
+			is_dashing = false #stop dash
+		else:
+			velocity.x = dash_direction.x * dash_speed_boost
+			velocity.z = dash_direction.z * dash_speed_boost
 	
 	
-	if direction != Vector3.ZERO:
+	elif direction != Vector3.ZERO:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 		
@@ -116,6 +133,22 @@ func try_winter_sneeze() -> void:
 	if visual_model:
 		var forward_dir = -visual_model.global_transform.basis.z
 		velocity += forward_dir * 6.0
+
+func try_summer_dash():
+	is_dashing = true
+	dash_timer = dash_duration #Restart timer to begin
+	is_floating = false #Cancel any current autumn float to avoid overlapping abilities
+	
+	if visual_model:
+		dash_direction = visual_model.global_transform.basis.x #Based on where facing
+	else:
+		dash_direction = Vector3.FORWARD #Based on camera when stationary
+		
+	velocity.y = 10.0
+	velocity.x = dash_direction.x * (dash_speed_boost * 1.2)
+	velocity.z = dash_direction.z * (dash_speed_boost * 1.2)
+	
+	
 
 func try_autumn_float() -> void:
 	velocity.y = 8.0

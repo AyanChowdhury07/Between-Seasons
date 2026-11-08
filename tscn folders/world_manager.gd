@@ -4,8 +4,11 @@ enum Weather {SPRING, WINTER, SUMMER, AUTUMN}
 
 @export var World_Environment : WorldEnvironment
 
-@export var SummerGridMap : GridMap
+@export var SpringGridMap : GridMap
 @export var WinterGridMap : GridMap
+@export var SummerGridMap : GridMap
+@export var AutumnGridMap : GridMap
+
 
 @export var WeatherUI : Sprite2D
 @export var Player : CharacterBody3D
@@ -21,10 +24,14 @@ var environments = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	set_weather(Weather.SPRING)
-	gridmaps = {Weather.WINTER: WinterGridMap,
-	Weather.SUMMER: SummerGridMap}
-	pass # Replace with function body.
+	gridmaps = {
+		Weather.SPRING: SpringGridMap,
+		Weather.WINTER: WinterGridMap,
+		Weather.SUMMER: SummerGridMap,
+		Weather.AUTUMN: AutumnGridMap
+	}
+	
+	set_weather(Weather.SPRING) #starting weather
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
@@ -68,4 +75,3 @@ func update_gridmaps(NewWeather : Weather) -> void:
 func update_PowerUps(NewWeather : Weather)-> void:
 	if Player and Player.has_method("set_weather_state"):
 		Player.set_weather_state(NewWeather)
-	#update later

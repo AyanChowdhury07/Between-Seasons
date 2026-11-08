@@ -11,11 +11,14 @@ height = 3.0
 [node name="VaneBody3D" type="CharacterBody3D" unique_id=249208905]
 script = ExtResource("1_v2le5")
 
-[node name="Vane" parent="." unique_id=489879806 instance=ExtResource("1_3yia2")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+[node name="ModelPivot" type="Node3D" parent="." unique_id=1406496982]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.659436, -1, -0.6468749)
+
+[node name="Vane" parent="ModelPivot" unique_id=489879806 instance=ExtResource("1_3yia2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.659436, 1, 0.6468749)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=438423687]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, -0.9, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, -0.9, -0.6280341)
 shape = SubResource("CapsuleShape3D_m28v3")
 
 [node name="CameraController" type="Node3D" parent="." unique_id=1509123532]
@@ -28,8 +31,14 @@ transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.965
 transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, 0.4668704, -13.333496)
 
 [node name="Camera3D" type="Camera3D" parent="CameraController/CameraTarget/CameraPivot" unique_id=1387547180]
-transform = Transform3D(1, 0, 0, 0, 0.9999997, 0, 0, 0, 0.9999997, 0.0938406, 1.4589949, 10.009767)
+transform = Transform3D(1, 0, 0, 0, 0.99999976, -1.4901161e-08, 0, 1.4901161e-08, 0.99999976, 0.0938406, 2.2731752, 6.9712043)
 
 [node name="Branch_visual" parent="." unique_id=1859561322 instance=ExtResource("3_rmjx5")]
 transform = Transform3D(0.35021484, 0, 0, 0, -4.371139e-08, 0.45155662, 0, -1, -1.9738167e-08, -0.6986606, -0.09032297, 2.188109)
 visible = false
+
+[node name="RayCastRight" type="RayCast3D" parent="." unique_id=588891670]
+target_position = Vector3(0.75, 0, 0)
+
+[node name="RayCastLeft" type="RayCast3D" parent="." unique_id=2039238406]
+target_position = Vector3(-1, 0, 0)

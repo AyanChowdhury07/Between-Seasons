@@ -6,7 +6,8 @@ const ROTATION_SPEED = 24
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-@onready var visual_model : Node3D = $Vane
+
+@onready var visual_model : Node3D = $ModelPivot
 @onready var anim_player : AnimationPlayer = $Vane/AnimationPlayer
 
 @export var Mouse_Sensitivity : float = 0.003
@@ -17,43 +18,73 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var current_weather_state : int  = 0
 #(0: Spring, 1: Winter, 2: Summer, 3: Autumn)
 
+#===================
+#Spring variables
+#===================
+@onready var branch_visual : Node3D = $Branch_visual # Your wooden cuboid branch
+@onready var ray_cast_right : RayCast3D = $RayCastRight
+@onready var ray_cast_left : RayCast3D = $RayCastLeft
+
+var is_spring_clinging : bool = false
+@export var wall_jump_up_velocity : float = 12.0
+@export var wall_jump_out_boost : float = 10.0
+
+#===================
 #Autumn variables
 var is_floating : bool = false
 var float_timer : float = 0.0
 @export var max_float_duration : float = 2.5
+#===================
 
+#===================
 #Summer variables
 var is_dashing : bool = false
 var dash_timer : float = 0.0
 @export var dash_duration : float = 0.5
 @export var dash_speed_boost : float = 50.0 #Dash speed
 var dash_direction : Vector3 = Vector3.ZERO #initialise direction
+#===================
+
 
 func _physics_process(delta: float) -> void:
 
 	# Add the gravity.
 	if not is_on_floor():
-		if is_floating and velocity.y < 0:
+		if is_spring_clinging:
+			velocity.y = 0 # Zero gravity / no sliding down
+			velocity.x = 0
+			velocity.z = 0
+		elif is_floating and velocity.y < 0:
 			velocity.y -= (gravity * 0.1) * delta #Autumn float
 		else:
 			velocity.y -= gravity * delta
 	else:
-		is_floating = false
-		#Reset's when touching ground
+		end_spring_cling() #end spring action
+		is_floating = false #end autumn action
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if Input.is_action_just_pressed("ui_accept"):
+		if is_on_floor():
+			velocity.y = JUMP_VELOCITY
+		elif is_spring_clinging:
+			try_spring_wall_jump()
+	
+	#Weather actions cases
 	if Input.is_action_just_pressed("Weather_Power_UP"):
 		match current_weather_state:
+			0:
+				try_spring_cling()
 			1:
 				try_winter_sneeze()
 			2:
 				try_summer_dash()
 			3:
 				try_autumn_float()
+	 # Release spring cling when power-up button is let go
+	if Input.is_action_just_released("Weather_Power_UP") and current_weather_state == 0:
+		end_spring_cling()
+	
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
 	#User input and camera rotation taken into account for Vector3 direction
@@ -69,7 +100,7 @@ func _physics_process(delta: float) -> void:
 			velocity.z = dash_direction.z * dash_speed_boost
 	
 	
-	elif direction != Vector3.ZERO:
+	elif not is_spring_clinging and direction != Vector3.ZERO:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 		
@@ -78,8 +109,7 @@ func _physics_process(delta: float) -> void:
 			var model_offset := PI / 2.0
 			var target_angle := atan2(direction.x, direction.z) - model_offset
 			visual_model.rotation.y = lerp_angle(visual_model.rotation.y, target_angle, ROTATION_SPEED * delta)
-		
-	else:
+	elif not is_spring_clinging:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
@@ -148,7 +178,63 @@ func try_summer_dash():
 	velocity.x = dash_direction.x * (dash_speed_boost * 1.2)
 	velocity.z = dash_direction.z * (dash_speed_boost * 1.2)
 	
+
+
+func try_spring_cling():
+	# Only cling if in air and touching a wall on either side
+	if not is_on_floor() and current_weather_state == 0:
+		if ray_cast_right.is_colliding() or ray_cast_left.is_colliding():
+			is_floating = false
+			is_dashing = false
+			is_spring_clinging = true
+			
+			if branch_visual:
+				branch_visual.visible = true
+
+func try_spring_wall_jump():
+	var push_direction = Vector3.ZERO
 	
+	if ray_cast_right.is_colliding():
+		var wall_normal = ray_cast_right.get_collision_normal()
+		push_direction = wall_normal
+	elif ray_cast_left.is_colliding():
+		var wall_normal = ray_cast_left.get_collision_normal()
+		push_direction = wall_normal
+		
+	velocity.y = wall_jump_up_velocity
+	velocity.x = push_direction.x * wall_jump_out_boost
+	velocity.z = push_direction.z * wall_jump_out_boost
+	
+	end_spring_cling()
+
+func end_spring_cling():
+	is_spring_clinging = false
+	if branch_visual:
+		branch_visual.visible = false
+
+func update_branch_visual():
+	if not branch_visual:
+		return
+		
+	var target_point = Vector3.ZERO
+	var colliding_ray = null
+	
+	if ray_cast_right.is_colliding():
+		colliding_ray = ray_cast_right
+		target_point = ray_cast_right.get_collision_point()
+	elif ray_cast_left.is_colliding():
+		colliding_ray = ray_cast_left
+		target_point = ray_cast_left.get_collision_point()
+		
+	if colliding_ray:
+		var start_point = global_position + Vector3(0, 0.5, 0)
+		var distance_to_wall = start_point.distance_to(target_point)
+		
+		branch_visual.visible = true
+		# Position branch at the midpoint between player and wall collision point
+		branch_visual.global_position = start_point + ((target_point - start_point) * 0.5)
+	else:
+		branch_visual.visible = false
 
 func try_autumn_float() -> void:
 	velocity.y = 8.0
@@ -159,6 +245,9 @@ func set_weather_state(new_weather : int) -> void:
 	current_weather_state = new_weather
 
 func _process(delta: float) -> void:
+	if is_spring_clinging:
+		update_branch_visual()
+	
 	# Smoothly match the camera controller's position to the player's position every frame
 	if CameraController:
 		CameraController.global_position = CameraController.global_position.lerp(global_position, 15.0 * delta)

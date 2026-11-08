@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bia4gq3ksvwtq"]
+
+[ext_resource type="PackedScene" uid="uid://mm12mn66mtfh" path="res://glb/Ground blocks.glb" id="1_x4b85"]
+[ext_resource type="PackedScene" uid="uid://cq2iw8rds4fwj" path="res://glb/Grass blocks.glb" id="2_jipst"]
+[ext_resource type="PackedScene" uid="uid://b47yyw3h5n4wk" path="res://glb/Autumn grass blocks.glb" id="3_bemb8"]
+
+[node name="Node3D" type="Node3D" unique_id=2089584369]
+
+[node name="Ground blocks" parent="." unique_id=459014675 instance=ExtResource("1_x4b85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4413376, 0, -4.485952)
+
+[node name="Grass blocks" parent="." unique_id=1618819391 instance=ExtResource("2_jipst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.981697, 0, 1.0915623)
+
+[node name="Autumn grass blocks" parent="." unique_id=1428290969 instance=ExtResource("3_bemb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0616255, 0, 5.8032618)

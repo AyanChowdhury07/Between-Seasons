@@ -18,7 +18,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.659436, -1, -0.6468749)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.659436, 1, 0.6468749)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=438423687]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, -0.9, -0.6280341)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.25342596, -0.9, -0.6280341)
 shape = SubResource("CapsuleShape3D_m28v3")
 
 [node name="CameraController" type="Node3D" parent="." unique_id=1509123532]
@@ -34,11 +34,11 @@ transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, 0.4668704,
 transform = Transform3D(1, 0, 0, 0, 0.99999976, -1.4901161e-08, 0, 1.4901161e-08, 0.99999976, 0.0938406, 2.2731752, 6.9712043)
 
 [node name="Branch_visual" parent="." unique_id=1859561322 instance=ExtResource("3_rmjx5")]
-transform = Transform3D(0.35021484, 0, 0, 0, -4.371139e-08, 0.45155662, 0, -1, -1.9738167e-08, -0.6986606, -0.09032297, 2.188109)
+transform = Transform3D(0.35021484, 0, 0, 0, -7.628817e-08, 0.18828714, 0, -1.7452698, -8.230292e-09, -0.6986606, -0.09032297, 2.188109)
 visible = false
 
 [node name="RayCastRight" type="RayCast3D" parent="." unique_id=588891670]
-target_position = Vector3(0.75, 0, 0)
+target_position = Vector3(2.5, 0, 0)
 
 [node name="RayCastLeft" type="RayCast3D" parent="." unique_id=2039238406]
-target_position = Vector3(-1, 0, 0)
+target_position = Vector3(-2, 0, 0)

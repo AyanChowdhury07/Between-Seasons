@@ -8,7 +8,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
 @onready var visual_model : Node3D = $ModelPivot
-@onready var anim_player : AnimationPlayer = $Vane/AnimationPlayer
+@onready var anim_player : AnimationPlayer = $ModelPivot/Vane/AnimationPlayer
 
 @export var Mouse_Sensitivity : float = 0.003
 

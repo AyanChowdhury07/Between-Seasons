@@ -1,8 +1,8 @@
 [gd_resource type="Environment" format=3 uid="uid://cd38ugrhetoss"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eywub"]
-sky_top_color = Color(0.8830404, 0.91244537, 0.9422211, 1)
-sky_horizon_color = Color(0.47451055, 0.6891345, 1, 1)
+sky_top_color = Color(0.89190996, 0.90845567, 0.95218056, 1)
+sky_horizon_color = Color(0.38431373, 0.6901961, 1, 1)
 sky_curve = 0.03045951
 
 [sub_resource type="Sky" id="Sky_431ae"]

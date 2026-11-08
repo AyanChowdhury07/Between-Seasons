@@ -3,11 +3,14 @@ extends Node
 enum Weather {SPRING, WINTER, SUMMER, AUTUMN}
 
 @export var World_Environment : WorldEnvironment
+
 @export var SummerGridMap : GridMap
+@export var WinterGridMap : GridMap
+
 @export var WeatherUI : Sprite2D
 @export var Player : CharacterBody3D
 
-
+var gridmaps = {}
 #Initialise background environments
 var environments = {
 	Weather.SPRING: preload("res://tres/Spring_env.tres"),
@@ -19,7 +22,8 @@ var environments = {
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_weather(Weather.SPRING)
-	
+	gridmaps = {Weather.WINTER: WinterGridMap,
+	Weather.SUMMER: SummerGridMap}
 	pass # Replace with function body.
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -47,14 +51,19 @@ func set_weather(NewWeather : Weather) -> void:
 		WeatherUI.change_ui_weather(NewWeather)
 	
 	#Change gridmaps
-	update_gridmaps()
+	update_gridmaps(NewWeather)
 	
 	#Change power ups
 	update_PowerUps(NewWeather)
 	
-func update_gridmaps() -> void:
-	pass
-	#update later
+func update_gridmaps(NewWeather : Weather) -> void:
+	for weather_type in gridmaps:
+		var map = gridmaps[weather_type]
+		if map:
+			var is_active = (weather_type == NewWeather)
+			map.visible = is_active
+			map.collision_layer = 1 if is_active else 0
+			map.collision_mask = 1 if is_active else 0
 
 func update_PowerUps(NewWeather : Weather)-> void:
 	if Player and Player.has_method("set_weather_state"):

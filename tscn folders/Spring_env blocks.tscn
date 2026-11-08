@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://db2vktw53sl3n"]
+
+[ext_resource type="PackedScene" uid="uid://5egupmar6ewf" path="res://glb/Spring grass blocks.glb" id="1_rakds"]
+[ext_resource type="PackedScene" uid="uid://mm12mn66mtfh" path="res://glb/Ground blocks.glb" id="2_swpnw"]
+[ext_resource type="PackedScene" uid="uid://cq2iw8rds4fwj" path="res://glb/Grass blocks.glb" id="3_p1po4"]
+
+[node name="Node3D" type="Node3D" unique_id=1268771826]
+
+[node name="Spring grass blocks" parent="." unique_id=2023877361 instance=ExtResource("1_rakds")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0834737, -1.1920929e-07, 0.8975482)
+
+[node name="Ground blocks" parent="." unique_id=459014675 instance=ExtResource("2_swpnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9918895, 0, 4.7409277)
+
+[node name="Grass blocks" parent="." unique_id=1618819391 instance=ExtResource("3_p1po4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2435017, 0, -3.593081)

@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
 const SPEED = 10
-const JUMP_VELOCITY = 8
-const ROTATION_SPEED = 24 
+const JUMP_VELOCITY = 16
+const ROTATION_SPEED = 24
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -69,6 +69,9 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 		elif is_spring_clinging:
 			try_spring_wall_jump()
+	
+	if Input.is_action_just_released("ui_accept") and velocity.y > 0:
+		velocity.y *= 0.5 
 	
 	#Weather actions cases
 	if Input.is_action_just_pressed("Weather_Power_UP"):
@@ -166,7 +169,7 @@ func _input(event):
 				
 
 func try_winter_sneeze() -> void:
-	velocity.y = 18.0 #Rocket jump up
+	velocity.y = JUMP_VELOCITY * 2 #Rocket jump up
 		
 	if visual_model:
 		var forward_dir = -visual_model.global_transform.basis.z
@@ -250,6 +253,9 @@ func try_autumn_float() -> void:
 
 func set_weather_state(new_weather : int) -> void:
 	current_weather_state = new_weather
+	is_floating = false #Stops floating while other weathers
+	is_spring_clinging = false #Stop cling in other weathers
+	has_used_air_ability = false #Allows abilities to mash up when switching eg float after sneeze
 
 func _process(delta: float) -> void:
 	if is_spring_clinging:

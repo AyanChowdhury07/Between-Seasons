@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dgk1cur3sxorg" path="res://Models/Vane.glb" id="1_3yia2"]
 [ext_resource type="Script" uid="uid://bqhadukosciiw" path="res://Models/vane_body_3d.gd" id="1_v2le5"]
+[ext_resource type="PackedScene" uid="uid://coxrpddeqbwb7" path="res://tscn folders/tree_branch.tscn" id="3_rmjx5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m28v3"]
 radius = 1.0
@@ -28,3 +29,7 @@ transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, 0.4668704,
 
 [node name="Camera3D" type="Camera3D" parent="CameraController/CameraTarget/CameraPivot" unique_id=1387547180]
 transform = Transform3D(1, 0, 0, 0, 0.9999997, 0, 0, 0, 0.9999997, 0.0938406, 1.4589949, 10.009767)
+
+[node name="Branch_visual" parent="." unique_id=1859561322 instance=ExtResource("3_rmjx5")]
+transform = Transform3D(0.35021484, 0, 0, 0, -4.371139e-08, 0.45155662, 0, -1, -1.9738167e-08, -0.6986606, -0.09032297, 2.188109)
+visible = false

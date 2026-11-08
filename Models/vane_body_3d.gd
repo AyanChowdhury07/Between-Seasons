@@ -17,7 +17,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var current_weather_state : int  = 0
 #(0: Spring, 1: Winter, 2: Summer, 3: Autumn)
-
+var has_used_air_ability : bool = false
 #===================
 #Spring variables
 #===================
@@ -61,6 +61,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		end_spring_cling() #end spring action
 		is_floating = false #end autumn action
+		has_used_air_ability = false #reset ability once landed
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept"):
@@ -71,15 +72,22 @@ func _physics_process(delta: float) -> void:
 	
 	#Weather actions cases
 	if Input.is_action_just_pressed("Weather_Power_UP"):
-		match current_weather_state:
-			0:
-				try_spring_cling()
-			1:
-				try_winter_sneeze()
-			2:
-				try_summer_dash()
-			3:
-				try_autumn_float()
+		# If we are in the air and trying to use a non-Spring ability after already using one, block it completely
+		if not is_on_floor() and current_weather_state != 0 and has_used_air_ability:
+			pass # Do nothing (prevents spamming)
+		else:
+			match current_weather_state:
+				0:
+					try_spring_cling()
+				1:
+					try_winter_sneeze()
+					has_used_air_ability = true
+				2:
+					try_summer_dash()
+					has_used_air_ability = true
+				3:
+					try_autumn_float()
+					has_used_air_ability = true
 	 # Release spring cling when power-up button is let go
 	if Input.is_action_just_released("Weather_Power_UP") and current_weather_state == 0:
 		end_spring_cling()
@@ -228,8 +236,7 @@ func update_branch_visual():
 		
 	if colliding_ray:
 		var start_point = global_position + Vector3(0, 0.5, 0)
-		var distance_to_wall = start_point.distance_to(target_point)
-		
+
 		branch_visual.visible = true
 		# Position branch at the midpoint between player and wall collision point
 		branch_visual.global_position = start_point + ((target_point - start_point) * 0.5)

@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://4l05ft6ljfca" path="res://wav/Victory audacity.wav" id="6_1eoiy"]
 
 [node name="VictoryScreen" type="Node3D" unique_id=1195081251]
+process_mode = 3
 script = ExtResource("1_u6uy3")
 
 [node name="ui" parent="." unique_id=1102243773 instance=ExtResource("2_1eoiy")]
@@ -33,3 +34,26 @@ transform = Transform3D(0.7124794, -0.2430167, 0.6582674, 0, 0.9381131, 0.346329
 
 [node name="VictoryAudio" type="AudioStreamPlayer3D" parent="." unique_id=1012222704]
 stream = ExtResource("6_1eoiy")
+
+[node name="VictoryUI" type="Control" parent="." unique_id=771531740]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VictoryUI" unique_id=2014564317]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 40.0
+offset_right = 238.0
+offset_bottom = 117.0
+scale = Vector2(4.6800003, 5.96)
+
+[node name="TitleLabel" type="Label" parent="VictoryUI/VBoxContainer" unique_id=1166517605]
+layout_mode = 2
+
+[node name="FinalTimeLabel" type="Label" parent="VictoryUI/VBoxContainer" unique_id=1096291796]
+layout_mode = 2
+
+[node name="PressReturnLabel" type="Label" parent="VictoryUI/VBoxContainer" unique_id=1593898293]
+layout_mode = 2

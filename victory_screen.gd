@@ -1,8 +1,14 @@
 extends Node3D # (or CanvasLayer, depending on your root node type)
+static var stored_final_time: float = 0.
 
 @onready var world_environment: WorldEnvironment = $WorldEnvironment
-@onready var time_label: Label = $UI/VBoxContainer/FinalTimeLabel # Adjust path to match your label node
-@onready var vane_model : Node3D = $Pivot
+
+@onready var title_label: Label = $VictoryUI/VBoxContainer/TitleLabel
+@onready var time_label: Label = $VictoryUI/VBoxContainer/FinalTimeLabel
+@onready var press_return_label: Label = $VictoryUI/VBoxContainer/PressReturnLabel
+
+
+@onready var vane_model: Node3D = $Pivot
 @onready var victory_audio: AudioStreamPlayer3D = $VictoryAudio
 #4 seasonal environments
 var environments = [
@@ -21,6 +27,16 @@ func _ready() -> void:
 	update_background()
 	if victory_audio and victory_audio.stream:
 		victory_audio.play()
+	
+	# Set title text
+	if title_label:
+		title_label.text = "SEASONS CONQUERED!"
+	
+	if press_return_label:
+		press_return_label.text = "Press Space to play again!"
+	
+	# Display final time from GlobalTime
+	display_victory_stats(stored_final_time)
 
 func _process(delta: float) -> void:
 	if vane_model:
@@ -32,10 +48,17 @@ func _process(delta: float) -> void:
 		timer = 0.0
 		current_env_index = (current_env_index + 1) % environments.size()
 		update_background()
+		
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_SPACE or event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER or event.is_action_pressed("ui_accept"):
+			get_tree().paused = false
+			get_tree().change_scene_to_file("res://tscn folders/world.tscn")
 
 func update_background() -> void:
 	if world_environment:
 		world_environment.environment = environments[current_env_index]
+
 
 
 func display_victory_stats(elapsed_time: float) -> void:

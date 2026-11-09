@@ -8,12 +8,19 @@ enum Weather {SPRING, WINTER, SUMMER, AUTUMN}
 @export var SummerGridMap : GridMap
 @export var AutumnGridMap : GridMap
 
+@onready var game_timer : Timer = $Timer
+var level_time: float = 0.0
+
 @export var block : Node3D
 
 @export var WeatherUI : Sprite2D
 @export var Player : CharacterBody3D
 
+const VictoryScreenScript = preload("res://victory_screen.gd")
 var cloud_medals_collected : int = 0
+
+var elapsed_level_time : float = 0.0
+var is_timer_active : bool = true
 
 var gridmaps = {}
 #Initialise background environments
@@ -26,6 +33,8 @@ var environments = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	level_time = 0.0
+	
 	gridmaps = {
 		Weather.SPRING: SpringGridMap,
 		Weather.WINTER: WinterGridMap,
@@ -49,7 +58,8 @@ func _unhandled_input(event: InputEvent) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
-	pass
+	if is_timer_active:
+		elapsed_level_time += delta
 	
 func set_weather(NewWeather : Weather) -> void:
 	
@@ -92,4 +102,6 @@ func increment_cloud_medal() -> void:
 	cloud_medals_collected += 1
 	
 	if cloud_medals_collected == 4:
+		game_timer.stop()
+		VictoryScreenScript.stored_final_time = elapsed_level_time
 		get_tree().change_scene_to_file("res://tscn folders/victory_screen.tscn")

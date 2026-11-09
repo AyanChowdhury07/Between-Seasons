@@ -20,16 +20,14 @@ func _on_body_entered(body: Node3D) -> void:
 			body.queue_free()
 			
 			solved_count += 1
-			print("Block placed! Total solved: ", solved_count)
+		
 			
 			# Check if both blocks have been successfully submitted
 			if solved_count >= required_blocks:
 				emit_signal("door_unlocked")
-				print("Both blocks placed on spirals! Cave door unlocked.")
-
+				
 func _on_door_unlocked() -> void:
 	if door:
-		print("Removing door GridMap.")
 		door.visible = false
 		door.collision_layer = 0
 		door.collision_mask = 0

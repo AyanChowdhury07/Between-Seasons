@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bccbk4kvjnkjv" path="res://pngs/UI/Summer UI.png" id="7_cc1mj"]
 [ext_resource type="Script" uid="uid://y73a74b3c8np" path="res://tscn folders/world_manager.gd" id="7_q75jw"]
 [ext_resource type="Script" uid="uid://dxxnqn1scyt3j" path="res://tscn folders/weather_icon.gd" id="8_6taqe"]
+[ext_resource type="Script" uid="uid://b8k4bwqc6nnhn" path="res://tscn folders/death_zone.gd" id="13_6xh4i"]
 [ext_resource type="MeshLibrary" uid="uid://cm2wk3s6u8xyb" path="res://Resources/General blocks.meshlib" id="13_jftad"]
 [ext_resource type="MeshLibrary" uid="uid://cy0amwecsxkl7" path="res://Resources/door.meshlib" id="14_vt105"]
 [ext_resource type="Script" uid="uid://ts4mmpcf4g2j" path="res://tscn folders/box_success_area.gd" id="15_mtisx"]
@@ -162,6 +163,7 @@ metadata/_editor_floor_ = Vector3(1, 2, 0)
 
 [node name="DeathZone" type="Area3D" parent="." unique_id=2123603163]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.0577135, 0)
+script = ExtResource("13_6xh4i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone" unique_id=1360001656]
 transform = Transform3D(36.049, 0, 0, 0, 10, 0, 0, 0, 10, -100, -100, -30.355682)

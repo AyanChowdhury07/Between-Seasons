@@ -7,6 +7,7 @@ var Manager : Node = null
 @onready var mesh: MeshInstance3D = $MeshInstance3D
 @onready var collision: CollisionShape3D = $CollisionShape3D
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Automatically hunt down the WorldManager in the current level scene tree

@@ -60,7 +60,6 @@ func set_weather(NewWeather : Weather) -> void:
 	if WeatherUI:
 		WeatherUI.change_ui_weather(NewWeather)
 	
-	# Inside your weather change logic
 	if NewWeather == Weather.SUMMER:
 		for child in block.get_children():
 			child.freeze = false

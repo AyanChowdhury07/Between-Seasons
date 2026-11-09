@@ -4,6 +4,13 @@ const SPEED = 10
 const JUMP_VELOCITY = 16
 const ROTATION_SPEED = 24
 
+const JUMP_SFX = preload("res://wav/Jump.wav")
+const DASH_SFX = preload("res://wav/Summer dash.wav")
+const DEATH_SFX = preload("res://wav/Death.wav")
+const SNEEZE_SFX = preload("res://wav/Sneeze.wav")
+const FLOAT_SFX = preload("res://wav/Float.wav")
+@onready var sfx_player: AudioStreamPlayer3D = $AudioStreamPlayer3D
+
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var spawn_transform : Transform3D
 
@@ -69,8 +76,12 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
 		if is_on_floor():
 			velocity.y = JUMP_VELOCITY
+			#if randf() < 0.25:
+				#play_sfx(JUMP_SFX)
 		elif is_spring_clinging:
 			try_spring_wall_jump()
+			#if randf() < 0.25:
+				#play_sfx(JUMP_SFX)
 	
 	if Input.is_action_just_released("ui_accept") and velocity.y > 0:
 		velocity.y *= 0.5 
@@ -190,6 +201,8 @@ func try_winter_sneeze() -> void:
 	if visual_model:
 		var forward_dir = -visual_model.global_transform.basis.z
 		velocity += forward_dir * 6.0
+		play_sfx(SNEEZE_SFX)
+		
 
 func try_summer_dash():
 	is_dashing = true
@@ -198,8 +211,10 @@ func try_summer_dash():
 	
 	if visual_model:
 		dash_direction = visual_model.global_transform.basis.x #Based on where facing
+		play_sfx(DASH_SFX)
 	else:
 		dash_direction = Vector3.FORWARD #Based on camera when stationary
+		play_sfx(DASH_SFX)
 		
 	velocity.y = 10.0
 	velocity.x = dash_direction.x * (dash_speed_boost * 1.2)
@@ -264,6 +279,7 @@ func update_branch_visual():
 func try_autumn_float() -> void:
 	velocity.y = 8.0
 	is_floating = true
+	play_sfx(FLOAT_SFX)
 	
 
 func set_weather_state(new_weather : int) -> void:
@@ -284,3 +300,9 @@ func _process(delta: float) -> void:
 func _on_death_zone_body_entered(body: Node3D) -> void:
 	if body == self:
 		global_transform = spawn_transform
+		play_sfx(DEATH_SFX)
+
+func play_sfx(stream: AudioStream) -> void:
+	if sfx_player and stream:
+		sfx_player.stream = stream
+		sfx_player.play()

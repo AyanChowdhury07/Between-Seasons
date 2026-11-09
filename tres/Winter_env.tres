@@ -4,6 +4,8 @@
 sky_top_color = Color(0.89190996, 0.90845567, 0.95218056, 1)
 sky_horizon_color = Color(0.38431373, 0.6901961, 1, 1)
 sky_curve = 0.03045951
+ground_bottom_color = Color(0.5320493, 0.6052405, 0.65892375, 1)
+ground_horizon_color = Color(0.7264744, 0.6030838, 0.76501, 1)
 
 [sub_resource type="Sky" id="Sky_431ae"]
 sky_material = SubResource("ProceduralSkyMaterial_eywub")
@@ -11,3 +13,4 @@ sky_material = SubResource("ProceduralSkyMaterial_eywub")
 [resource]
 background_mode = 2
 sky = SubResource("Sky_431ae")
+ambient_light_color = Color(0.061415225, 0.0061479365, 0.051585995, 1)

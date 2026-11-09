@@ -3,6 +3,8 @@
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4ae5f"]
 sky_top_color = Color(0.745032, 0.25347194, 0.29419446, 1)
 sky_horizon_color = Color(0.8173435, 0.668261, 0.43130198, 1)
+ground_bottom_color = Color(0.3694356, 0.18430641, 0.18386957, 1)
+ground_horizon_color = Color(0.85283595, 0.58236676, 0.43332586, 1)
 
 [sub_resource type="Sky" id="Sky_qgcj6"]
 sky_material = SubResource("ProceduralSkyMaterial_4ae5f")

@@ -4,6 +4,8 @@
 sky_top_color = Color(0.8784314, 0.73333335, 0.8156863, 1)
 sky_horizon_color = Color(0.40158278, 0.7311671, 0.86687297, 1)
 sky_curve = 0.07500005
+ground_bottom_color = Color(0.14506361, 0.18585157, 0.12044031, 1)
+ground_horizon_color = Color(0.75944644, 0.59391606, 0.73063445, 1)
 
 [sub_resource type="Sky" id="Sky_431ae"]
 sky_material = SubResource("ProceduralSkyMaterial_eywub")

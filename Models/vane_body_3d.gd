@@ -264,3 +264,7 @@ func _process(delta: float) -> void:
 	# Smoothly match the camera controller's position to the player's position every frame
 	if CameraController:
 		CameraController.global_position = CameraController.global_position.lerp(global_position, 15.0 * delta)
+
+
+func _on_death_zone_body_entered(body: Node3D) -> void:
+	get_tree().change_scene_to_file("res://tscn folders/world.tscn")

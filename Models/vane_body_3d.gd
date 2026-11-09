@@ -126,6 +126,20 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	_update_animations()
+	
+	if is_dashing:
+		for i in range(get_slide_collision_count()):
+			var collision = get_slide_collision(i)
+			var collider = collision.get_collider()
+			
+			# Check if it's one of your pushable blocks
+			if collider is RigidBody3D and not collider.freeze:
+				# Calculate push direction away from the surface hit
+				var push_dir = -collision.get_normal()
+				push_dir.y = 0.2 # Slight upward bias to help it tip over
+				
+				# Apply the physical impulse to knock it over
+				collider.apply_central_impulse(push_dir * 15.0)
 
 func _update_animations() -> void:
 	if not anim_player:
@@ -189,7 +203,6 @@ func try_summer_dash():
 	velocity.x = dash_direction.x * (dash_speed_boost * 1.2)
 	velocity.z = dash_direction.z * (dash_speed_boost * 1.2)
 	
-
 
 func try_spring_cling():
 	# Only cling if in air and touching a wall on either side
@@ -267,4 +280,5 @@ func _process(delta: float) -> void:
 
 
 func _on_death_zone_body_entered(body: Node3D) -> void:
-	get_tree().change_scene_to_file("res://tscn folders/world.tscn")
+	if body == self:
+		get_tree().change_scene_to_file("res://tscn folders/world.tscn")

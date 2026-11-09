@@ -114,13 +114,14 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=119551021]
 environment = ExtResource("6_mkb4v")
 
-[node name="WorldManager" type="Node" parent="." unique_id=1861343068 node_paths=PackedStringArray("World_Environment", "SpringGridMap", "WinterGridMap", "SummerGridMap", "AutumnGridMap", "WeatherUI", "Player")]
+[node name="WorldManager" type="Node" parent="." unique_id=1861343068 node_paths=PackedStringArray("World_Environment", "SpringGridMap", "WinterGridMap", "SummerGridMap", "AutumnGridMap", "block", "WeatherUI", "Player")]
 script = ExtResource("7_q75jw")
 World_Environment = NodePath("../WorldEnvironment")
 SpringGridMap = NodePath("../Weather_Manager/SpringGridMap")
 WinterGridMap = NodePath("../Weather_Manager/WinterGridMap")
 SummerGridMap = NodePath("../Weather_Manager/SummerGridMap")
 AutumnGridMap = NodePath("../Weather_Manager/AutumnGridMap")
+block = NodePath("../Blocks")
 WeatherUI = NodePath("../UI/WeatherIcon")
 Player = NodePath("../VaneBody3D")
 

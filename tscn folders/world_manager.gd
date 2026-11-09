@@ -9,6 +9,7 @@ enum Weather {SPRING, WINTER, SUMMER, AUTUMN}
 @export var SummerGridMap : GridMap
 @export var AutumnGridMap : GridMap
 
+@export var block : Node3D
 
 @export var WeatherUI : Sprite2D
 @export var Player : CharacterBody3D
@@ -56,6 +57,16 @@ func set_weather(NewWeather : Weather) -> void:
 	
 	if WeatherUI:
 		WeatherUI.change_ui_weather(NewWeather)
+	
+	# Inside your weather change logic
+	if NewWeather == Weather.SUMMER:
+		for child in block.get_children():
+			child.freeze = false
+	else:
+		for child in block.get_children():
+			child.freeze = true
+			child.linear_velocity = Vector3.ZERO
+			
 	
 	#Change gridmaps
 	update_gridmaps(NewWeather)

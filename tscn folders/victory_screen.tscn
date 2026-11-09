@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dnm4himcaur0"]
+
+[ext_resource type="Script" uid="uid://dfdqwqxbxjuxk" path="res://victory_screen.gd" id="1_u6uy3"]
+[ext_resource type="PackedScene" uid="uid://cxbdoyx7jwjry" path="res://tscn folders/ui.tscn" id="2_1eoiy"]
+[ext_resource type="MeshLibrary" uid="uid://do3pp4b4p2k3y" path="res://Resources/Building blocks.meshlib" id="3_4wnil"]
+[ext_resource type="PackedScene" uid="uid://dghq6orsxjyup" path="res://glb/Vane.glb" id="4_xdufd"]
+[ext_resource type="Environment" uid="uid://10l8hu5jljgc" path="res://tres/Spring_env.tres" id="5_c8abh"]
+
+[node name="VictoryScreen" type="Node3D" unique_id=1195081251]
+script = ExtResource("1_u6uy3")
+
+[node name="ui" parent="." unique_id=1102243773 instance=ExtResource("2_1eoiy")]
+
+[node name="GridMap" type="GridMap" parent="." unique_id=625304826]
+mesh_library = ExtResource("3_4wnil")
+data = {
+"cells": PackedInt32Array(-327692, 65531, 0, -327691, 65531, 0, -327691, 65530, 0, -327690, 65530, 0, -327690, 65529, 0, -327689, 65529, 0, -327689, 65528, 0, -327688, 65528, 0, -327688, 65527, 0, -327687, 65527, 0, -327686, 65527, 0, -327686, 65526, 0, -327685, 65526, 0, -327685, 65525, 0, -327684, 65525, 0, -327683, 65525, 0, -327683, 65526, 0, -327683, 65527, 0, -327684, 65527, 0, -327684, 65526, 0, -327686, 65528, 0, -327687, 65528, 0, -327687, 65529, 0, -327688, 65529, 0, -327689, 65530, 0, -327690, 65531, 0, -327690, 65532, 0, -327689, 65531, 0, -327688, 65531, 0, -327687, 65531, 0, -327687, 65530, 0, -327686, 65530, 0, -327685, 65530, 0, -327685, 65529, 0, -327684, 65528, 0, -327685, 65527, 0, -327685, 65528, 0, -327686, 65529, 0, -327690, 65528, 0, -327688, 65530, 0)
+}
+metadata/_editor_floor_ = Vector3(0, -6, 0)
+
+[node name="Pivot" type="Node3D" parent="." unique_id=1328334754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.69721, -8.056693, -12.4211235)
+
+[node name="Vane" parent="Pivot" unique_id=476983590 instance=ExtResource("4_xdufd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1694622, 0.9714756, 0.6708679)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=427953061]
+environment = ExtResource("5_c8abh")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1610225658]
+transform = Transform3D(0.7124794, -0.2430167, 0.6582674, 0, 0.9381131, 0.3463291, -0.701693, -0.24675235, 0.6683863, 0, 0, 0)

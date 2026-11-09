@@ -14,9 +14,13 @@
 [ext_resource type="Script" uid="uid://dxxnqn1scyt3j" path="res://tscn folders/weather_icon.gd" id="8_6taqe"]
 [ext_resource type="MeshLibrary" uid="uid://cm2wk3s6u8xyb" path="res://Resources/General blocks.meshlib" id="13_jftad"]
 [ext_resource type="MeshLibrary" uid="uid://cy0amwecsxkl7" path="res://Resources/door.meshlib" id="14_vt105"]
+[ext_resource type="Script" uid="uid://ts4mmpcf4g2j" path="res://tscn folders/box_success_area.gd" id="15_mtisx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m28v3"]
 size = Vector3(61.77974, 1, 160.77734)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t4ws7"]
+size = Vector3(0.6713867, 0.5036621, 1)
 
 [node name="World" type="Node3D" unique_id=1173020715]
 
@@ -79,6 +83,12 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 29.736582, 
 
 [node name="UnlockBlock2" parent="Blocks" unique_id=390139522 instance=ExtResource("1_ta02f")]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -9.274513, 6.99363, -55.679085)
+
+[node name="SuccessBlock1" parent="Blocks" unique_id=552970113 instance=ExtResource("1_ta02f")]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 15.925576, 8.103767, -57.760017)
+
+[node name="SuccessBlock2" parent="Blocks" unique_id=453135381 instance=ExtResource("1_ta02f")]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 19.972332, 7.9905124, -56.658714)
 
 [node name="VaneBody3D" parent="." unique_id=249208905 instance=ExtResource("2_llf1o")]
 transform = Transform3D(0.49993017, -0.008356706, -5.524894e-09, 0.008356706, 0.49993017, -3.818163e-09, 5.5879372e-09, 3.7252899e-09, 0.5, -2.496306, 3.507691, 2.3212838)
@@ -174,5 +184,14 @@ data = {
 "cells": PackedInt32Array(262136, 65507, 786433, 262137, 65507, 786433, 262138, 65507, 786433, 262139, 65507, 786433, 262140, 65507, 786433, 262141, 65507, 786433, 327672, 65507, 786433, 327673, 65507, 786433, 327674, 65507, 786433, 327675, 65507, 786433, 327677, 65507, 786433, 327676, 65507, 786433, 393213, 65507, 786433, 393212, 65507, 786433, 393211, 65507, 786433, 393210, 65507, 786433, 393209, 65507, 786433, 393208, 65507, 786433, 458749, 65507, 786433, 458748, 65507, 786433, 458747, 65507, 786433, 458746, 65507, 786433, 458745, 65507, 786433, 458744, 65507, 786433, 458743, 65507, 786433, 393207, 65507, 786433, 327671, 65507, 786433, 327678, 65507, 786433, 327679, 65507, 786433, 393214, 65507, 786433, 393215, 65507, 786433, 458750, 65507, 786433, 458751, 65507, 786433, 327671, 65506, 786433, 393207, 65506, 786433, 458743, 65506, 786433, 327679, 65506, 786433, 393215, 65506, 786433, 458751, 65506, 786433, 524287, 65506, 786433, 524287, 65507, 786433, 524286, 65507, 786433, 524285, 65507, 786433, 524284, 65507, 786433, 524283, 65507, 786433, 524282, 65507, 786433, 524281, 65507, 786433, 524280, 65507, 786433, 524279, 65507, 786433, 524279, 65506, 786433)
 }
 metadata/_editor_floor_ = Vector3(0, 7, 0)
+
+[node name="BoxSuccess Area" type="Area3D" parent="." unique_id=140824862 node_paths=PackedStringArray("door")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.323663, 10.614134, -59.05669)
+script = ExtResource("15_mtisx")
+door = NodePath("../DoorGridMap")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxSuccess Area" unique_id=2030306322]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -4.2472982, 4.425049, 0)
+shape = SubResource("BoxShape3D_t4ws7")
 
 [connection signal="body_entered" from="DeathZone" to="VaneBody3D" method="_on_death_zone_body_entered"]

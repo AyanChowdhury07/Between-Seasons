@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://byn3bbqglju3c" path="res://Models/cloud_medal.gd" id="1_4easn"]
 [ext_resource type="Texture2D" uid="uid://breagm5te1ta3" path="res://pngs/CloudMedal.png" id="2_fbyk8"]
+[ext_resource type="AudioStream" uid="uid://doxq15hncuadq" path="res://wav/Cloud_medal.wav" id="3_cr84s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fbyk8"]
 transparency = 1
@@ -28,5 +29,8 @@ mesh = SubResource("PlaneMesh_kyu14")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=102566570]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_t4ws7")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=451836930]
+stream = ExtResource("3_cr84s")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -3,6 +3,9 @@ extends Area3D
 const ROTATION_SPEED = 2.0 # Degrees per frame of rotation
 
 var Manager : Node = null
+@onready var audio_player: AudioStreamPlayer3D = $AudioStreamPlayer3D
+@onready var mesh: MeshInstance3D = $MeshInstance3D
+@onready var collision: CollisionShape3D = $CollisionShape3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,4 +23,10 @@ func _on_body_entered(body: Node3D) -> void:
 		if Manager and Manager.has_method("increment_cloud_medal"):
 			Manager.increment_cloud_medal()
 		
+		mesh.visible = false
+		collision.set_deferred("disabled", true)
+		
+		if audio_player and audio_player.stream:
+			audio_player.play()
+			await audio_player.finished
 		queue_free()

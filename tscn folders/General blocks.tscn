@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bdyf0gmjoajrj"]
+
+[ext_resource type="PackedScene" uid="uid://crx2qnj6l11l3" path="res://glb/Rocky blocks.glb" id="1_ktoqi"]
+[ext_resource type="PackedScene" uid="uid://mm12mn66mtfh" path="res://glb/Ground blocks.glb" id="2_rbnqg"]
+[ext_resource type="PackedScene" uid="uid://cq2iw8rds4fwj" path="res://glb/Grass blocks.glb" id="3_cgal8"]
+
+[node name="Node3D" type="Node3D" unique_id=1561015874]
+
+[node name="Rocky blocks" parent="." unique_id=1942118924 instance=ExtResource("1_ktoqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6624708, 0, 0.05439663)
+
+[node name="Ground blocks" parent="." unique_id=459014675 instance=ExtResource("2_rbnqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5351629, 0, 5.840107)
+
+[node name="Grass blocks" parent="." unique_id=1618819391 instance=ExtResource("3_cgal8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8746786, 0, 10.948498)

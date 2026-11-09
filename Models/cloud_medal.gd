@@ -1,27 +1,23 @@
 extends Area3D
 
-const ROTATION_SPEED = 2 #Degrees per frame of rotation
+const ROTATION_SPEED = 2.0 # Degrees per frame of rotation
+
+var Manager : Node = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	# Automatically hunt down the WorldManager in the current level scene tree
+	Manager = get_tree().current_scene.get_node_or_null("WorldManager")
+	if not Manager:
+		print("Warning: Cloud Medal could not find WorldManager!")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float):
-	var camera = get_viewport().get_camera_3d()
-	if camera:
-		# Get the camera's position
-		var target_pos = camera.global_position
+func _process(delta: float) -> void:
+	rotate_y(ROTATION_SPEED * delta)
 		
-		# Lock the Y coordinate so the medal stays upright and doesn't tilt toward the sky/ground
-		target_pos.y = global_position.y
-		
-		# Make the medal face the camera
-		look_at(target_pos, Vector3.UP)
-		
-		# Optional: If the medal's flat face is pointing away from the camera, 
-		# uncomment the line below to flip it around:
-		# rotate_object_local(Vector3.UP, PI)
-
 func _on_body_entered(body: Node3D) -> void:
-	queue_free()
+	if body.name == "VaneBody3D" or body.is_in_group("player"):
+		if Manager and Manager.has_method("increment_cloud_medal"):
+			Manager.increment_cloud_medal()
+		
+		queue_free()

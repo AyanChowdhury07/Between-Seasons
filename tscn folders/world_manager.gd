@@ -3,7 +3,6 @@ extends Node
 enum Weather {SPRING, WINTER, SUMMER, AUTUMN}
 
 @export var World_Environment : WorldEnvironment
-
 @export var SpringGridMap : GridMap
 @export var WinterGridMap : GridMap
 @export var SummerGridMap : GridMap
@@ -13,6 +12,8 @@ enum Weather {SPRING, WINTER, SUMMER, AUTUMN}
 
 @export var WeatherUI : Sprite2D
 @export var Player : CharacterBody3D
+
+var cloud_medals_collected : int = 0
 
 var gridmaps = {}
 #Initialise background environments
@@ -86,3 +87,6 @@ func update_gridmaps(NewWeather : Weather) -> void:
 func update_PowerUps(NewWeather : Weather)-> void:
 	if Player and Player.has_method("set_weather_state"):
 		Player.set_weather_state(NewWeather)
+
+func increment_cloud_medal() -> void:
+	cloud_medals_collected += 1

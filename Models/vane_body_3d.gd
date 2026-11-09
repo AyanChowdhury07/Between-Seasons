@@ -5,7 +5,7 @@ const JUMP_VELOCITY = 16
 const ROTATION_SPEED = 24
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
+var spawn_transform : Transform3D
 
 @onready var visual_model : Node3D = $ModelPivot
 @onready var anim_player : AnimationPlayer = $ModelPivot/Vane/AnimationPlayer
@@ -45,6 +45,8 @@ var dash_timer : float = 0.0
 var dash_direction : Vector3 = Vector3.ZERO #initialise direction
 #===================
 
+func _ready() -> void:
+	spawn_transform = global_transform
 
 func _physics_process(delta: float) -> void:
 
@@ -281,4 +283,4 @@ func _process(delta: float) -> void:
 
 func _on_death_zone_body_entered(body: Node3D) -> void:
 	if body == self:
-		get_tree().change_scene_to_file("res://tscn folders/world.tscn")
+		global_transform = spawn_transform

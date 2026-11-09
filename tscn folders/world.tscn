@@ -171,7 +171,10 @@ shape = SubResource("BoxShape3D_m28v3")
 
 [node name="Cloud medals" type="Node3D" parent="." unique_id=748226853]
 
-[node name="Cloud Medal" parent="Cloud medals" unique_id=154702212 instance=ExtResource("3_mkb4v")]
+[node name="Cloud Medal4" parent="Cloud medals" unique_id=154702212 instance=ExtResource("3_mkb4v")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -11.490495, 9.569363, -61.14047)
+
+[node name="Cloud Medal" parent="Cloud medals" unique_id=553417755 instance=ExtResource("3_mkb4v")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.8845558, 3.0089278, 121.48906)
 
 [node name="Cloud Medal2" parent="Cloud medals" unique_id=1552363715 instance=ExtResource("3_mkb4v")]

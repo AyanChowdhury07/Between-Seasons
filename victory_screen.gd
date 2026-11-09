@@ -3,6 +3,7 @@ extends Node3D # (or CanvasLayer, depending on your root node type)
 @onready var world_environment: WorldEnvironment = $WorldEnvironment
 @onready var time_label: Label = $UI/VBoxContainer/FinalTimeLabel # Adjust path to match your label node
 @onready var vane_model : Node3D = $Pivot
+@onready var victory_audio: AudioStreamPlayer3D = $VictoryAudio
 #4 seasonal environments
 var environments = [
 	preload("res://tres/Spring_env.tres"),
@@ -18,6 +19,8 @@ const ROTATION_SPEED: float = 2.0
 
 func _ready() -> void:
 	update_background()
+	if victory_audio and victory_audio.stream:
+		victory_audio.play()
 
 func _process(delta: float) -> void:
 	if vane_model:

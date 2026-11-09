@@ -5,6 +5,7 @@
 [ext_resource type="MeshLibrary" uid="uid://do3pp4b4p2k3y" path="res://Resources/Building blocks.meshlib" id="3_4wnil"]
 [ext_resource type="PackedScene" uid="uid://dghq6orsxjyup" path="res://glb/Vane.glb" id="4_xdufd"]
 [ext_resource type="Environment" uid="uid://10l8hu5jljgc" path="res://tres/Spring_env.tres" id="5_c8abh"]
+[ext_resource type="AudioStream" uid="uid://4l05ft6ljfca" path="res://wav/Victory audacity.wav" id="6_1eoiy"]
 
 [node name="VictoryScreen" type="Node3D" unique_id=1195081251]
 script = ExtResource("1_u6uy3")
@@ -29,3 +30,6 @@ environment = ExtResource("5_c8abh")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1610225658]
 transform = Transform3D(0.7124794, -0.2430167, 0.6582674, 0, 0.9381131, 0.3463291, -0.701693, -0.24675235, 0.6683863, 0, 0, 0)
+
+[node name="VictoryAudio" type="AudioStreamPlayer3D" parent="." unique_id=1012222704]
+stream = ExtResource("6_1eoiy")

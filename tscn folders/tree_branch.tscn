@@ -2,4 +2,4 @@
 
 [ext_resource type="PackedScene" uid="uid://da6g07i88p71k" path="res://glb/Tree_branch.glb" id="1_ylg3h"]
 
-[node name="Tree_branch" unique_id=1859561322 instance=ExtResource("1_ylg3h")]
+[node name="door" unique_id=1859561322 instance=ExtResource("1_ylg3h")]

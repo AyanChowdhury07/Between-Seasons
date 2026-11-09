@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://duxf1ftvmlxuc"]
+
+[ext_resource type="Texture2D" uid="uid://dy03mjyar4oib" path="res://glb/Tree_branch_Spring power up texture.png" id="1_ba8gm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6xrn"]
+albedo_texture = ExtResource("1_ba8gm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ba8gm"]
+albedo_texture = ExtResource("1_ba8gm")
+
+[sub_resource type="BoxMesh" id="BoxMesh_t4ws7"]
+material = SubResource("StandardMaterial3D_ba8gm")
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t4ws7"]
+
+[node name="Node3D" type="Node3D" unique_id=631398009]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1812609438]
+material_override = SubResource("StandardMaterial3D_v6xrn")
+mesh = SubResource("BoxMesh_t4ws7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=584759978]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=262888980]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_t4ws7")

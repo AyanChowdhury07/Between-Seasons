@@ -1,6 +1,7 @@
 extends Node
 
 enum Weather {SPRING, WINTER, SUMMER, AUTUMN}
+var current_weather: Weather = Weather.SPRING
 
 @export var World_Environment : WorldEnvironment
 @export var SpringGridMap : GridMap
@@ -46,13 +47,13 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
-		if event.physical_keycode == KEY_1:
+		if event.physical_keycode == KEY_1 and current_weather != Weather.SPRING:
 			set_weather(Weather.SPRING)
-		elif event.physical_keycode == KEY_2:
+		elif event.physical_keycode == KEY_2 and current_weather != Weather.WINTER:
 			set_weather(Weather.WINTER)
-		elif event.physical_keycode == KEY_3:
+		elif event.physical_keycode == KEY_3 and current_weather != Weather.SUMMER:
 			set_weather(Weather.SUMMER)
-		elif event.physical_keycode == KEY_4:
+		elif event.physical_keycode == KEY_4 and current_weather != Weather.AUTUMN:
 			set_weather(Weather.AUTUMN)
  
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -62,7 +63,7 @@ func _process(delta: float) -> void:
 		elapsed_level_time += delta
 	
 func set_weather(NewWeather : Weather) -> void:
-	
+	current_weather = NewWeather
 	#Change background
 	if World_Environment and environments.has(NewWeather):
 		World_Environment.environment = environments[NewWeather]

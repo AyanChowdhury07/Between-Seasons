@@ -21,8 +21,6 @@ func _on_body_entered(body: Node3D) -> void:
 			
 			solved_count += 1
 		
-			
-			# Check if both blocks have been successfully submitted
 			if solved_count >= required_blocks:
 				emit_signal("door_unlocked")
 				

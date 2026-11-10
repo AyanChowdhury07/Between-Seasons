@@ -10,7 +10,6 @@ var Manager : Node = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# Automatically hunt down the WorldManager in the current level scene tree
 	Manager = get_tree().current_scene.get_node_or_null("WorldManager")
 	if not Manager:
 		print("Warning: Cloud Medal could not find WorldManager!")

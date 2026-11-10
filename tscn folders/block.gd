@@ -9,12 +9,12 @@ func _ready() -> void:
 	spawn_transform = global_transform
 
 func respawn() -> void:
-	# Reset physics state so momentum doesn't carry over
+	# Reset physics state
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO
 	global_transform = spawn_transform
 	
-	# Make sure it's visible and active again
+	#Visible and active again
 	visible = true
 	freeze = false
 
@@ -29,7 +29,7 @@ func _on_body_entered(body: Node3D) -> void:
 		
 		# Calculate push direction
 		var push_dir = (global_transform.origin - body.global_transform.origin).normalized()
-		push_dir.y = 0.2 # Give it a slight upward bump
+		push_dir.y = 0.2 # Give it an upward bump
 		
 		# Apply force
 		apply_central_impulse(push_dir * push_force)

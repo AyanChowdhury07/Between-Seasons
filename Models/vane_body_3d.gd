@@ -292,7 +292,7 @@ func _process(delta: float) -> void:
 	if is_spring_clinging:
 		update_branch_visual()
 	
-	# Smoothly match the camera controller's position to the player's position every frame
+	
 	if CameraController:
 		CameraController.global_position = CameraController.global_position.lerp(global_position, 15.0 * delta)
 

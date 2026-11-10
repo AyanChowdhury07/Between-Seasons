@@ -102,6 +102,5 @@ func increment_cloud_medal() -> void:
 	cloud_medals_collected += 1
 	
 	if cloud_medals_collected == 4:
-		game_timer.stop()
 		VictoryScreenScript.stored_final_time = elapsed_level_time
 		get_tree().change_scene_to_file("res://tscn folders/victory_screen.tscn")

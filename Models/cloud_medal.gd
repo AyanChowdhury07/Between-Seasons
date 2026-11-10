@@ -30,4 +30,6 @@ func _on_body_entered(body: Node3D) -> void:
 		if audio_player and audio_player.stream:
 			audio_player.play()
 			await audio_player.finished
+		if body.name == "VaneBody3D" or body.is_in_group("player"):
+			body.global_transform = body.spawn_transform
 		queue_free()

@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://clwbwlafjaqsg"
-path.s3tc="res://.godot/imported/Grass blocks_grass.png-e88cdf92046c4e59bb89073ded8fefc8.s3tc.ctex"
+path="res://.godot/imported/Grass blocks_grass.png-e88cdf92046c4e59bb89073ded8fefc8.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "a3e20e3910e8008c25bb15e2766f3f7d"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://glb/Grass blocks_grass.png"
-dest_files=["res://.godot/imported/Grass blocks_grass.png-e88cdf92046c4e59bb89073ded8fefc8.s3tc.ctex"]
+dest_files=["res://.godot/imported/Grass blocks_grass.png-e88cdf92046c4e59bb89073ded8fefc8.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

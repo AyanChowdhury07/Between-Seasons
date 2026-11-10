@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b7devi0bnsk6b"
-path.s3tc="res://.godot/imported/Ice blocks_Ice.png-5f37541288c3a37b82ccaf0739dc5eff.s3tc.ctex"
+path="res://.godot/imported/Ice blocks_Ice.png-5f37541288c3a37b82ccaf0739dc5eff.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "36401ac64ac0cff6cd8aca1e4603f320"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://glb/Ice blocks_Ice.png"
-dest_files=["res://.godot/imported/Ice blocks_Ice.png-5f37541288c3a37b82ccaf0739dc5eff.s3tc.ctex"]
+dest_files=["res://.godot/imported/Ice blocks_Ice.png-5f37541288c3a37b82ccaf0739dc5eff.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

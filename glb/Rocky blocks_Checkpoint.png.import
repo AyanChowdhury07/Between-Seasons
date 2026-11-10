@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://0i5fadkt54kw"
-path.s3tc="res://.godot/imported/Rocky blocks_Checkpoint.png-9dc263ebca976860495b01cba86345a0.s3tc.ctex"
+path="res://.godot/imported/Rocky blocks_Checkpoint.png-9dc263ebca976860495b01cba86345a0.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "524302037b4a96fea0fde85b437ab5f1"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://glb/Rocky blocks_Checkpoint.png"
-dest_files=["res://.godot/imported/Rocky blocks_Checkpoint.png-9dc263ebca976860495b01cba86345a0.s3tc.ctex"]
+dest_files=["res://.godot/imported/Rocky blocks_Checkpoint.png-9dc263ebca976860495b01cba86345a0.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dlljmhu2mqps0"
-path.s3tc="res://.godot/imported/Snowy grass blocks_Snowy grass_1.png-7920be30e670f447c6673b34771e6d2c.s3tc.ctex"
+path="res://.godot/imported/Snowy grass blocks_Snowy grass_1.png-7920be30e670f447c6673b34771e6d2c.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "31c6bdf72335c4ef9d90b8c2fb07ae47"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://glb/Snowy grass blocks_Snowy grass_1.png"
-dest_files=["res://.godot/imported/Snowy grass blocks_Snowy grass_1.png-7920be30e670f447c6673b34771e6d2c.s3tc.ctex"]
+dest_files=["res://.godot/imported/Snowy grass blocks_Snowy grass_1.png-7920be30e670f447c6673b34771e6d2c.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

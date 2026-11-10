@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cy5v5s5ai7kkw"
-path.s3tc="res://.godot/imported/Ground blocks_Ground.png-8cb99e43068a7722da5c98efac98046e.s3tc.ctex"
+path="res://.godot/imported/Ground blocks_Ground.png-8cb99e43068a7722da5c98efac98046e.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "9c2f1b62b9a2de0905f7b339d5fc7728"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://glb/Ground blocks_Ground.png"
-dest_files=["res://.godot/imported/Ground blocks_Ground.png-8cb99e43068a7722da5c98efac98046e.s3tc.ctex"]
+dest_files=["res://.godot/imported/Ground blocks_Ground.png-8cb99e43068a7722da5c98efac98046e.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

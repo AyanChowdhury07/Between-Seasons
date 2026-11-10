@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://djr48t2gm1vqt"
-path.s3tc="res://.godot/imported/Autumn grass blocks_Autumn grass.png-afddaf910f4cd61941537848be7330b4.s3tc.ctex"
+path="res://.godot/imported/Autumn grass blocks_Autumn grass.png-afddaf910f4cd61941537848be7330b4.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "3358c288f0c61c31c2829196522f1445"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://glb/Autumn grass blocks_Autumn grass.png"
-dest_files=["res://.godot/imported/Autumn grass blocks_Autumn grass.png-afddaf910f4cd61941537848be7330b4.s3tc.ctex"]
+dest_files=["res://.godot/imported/Autumn grass blocks_Autumn grass.png-afddaf910f4cd61941537848be7330b4.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
